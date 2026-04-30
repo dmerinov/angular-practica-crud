@@ -3,11 +3,17 @@ import HomePageComponent from './features/home-page-component/home-page-componen
 
 export const routes: Routes = [
   {
-    path: 'home',
-    loadComponent: () =>
-      import('./features/home-page-component/home-page-component'),
+    path: '',
+    loadComponent: () => import('./core/layout/layout.component/layout.component'),
+    children: [
+      {
+        path: 'home',
+        loadComponent: () => import('./features/home-page-component/home-page-component'),
+      },
+    ],
   },
   {
-    path: '**', redirectTo: 'home',
-  }
+    path: '**',
+    redirectTo: '',
+  },
 ];

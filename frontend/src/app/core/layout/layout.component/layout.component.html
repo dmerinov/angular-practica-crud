@@ -1,0 +1,26 @@
+<div class="layout">
+  <aside class="sidebar">
+    <h2>Práctica CRUD</h2>
+    <nav>
+      @for (item of menuOptions; track item.route) {
+      <a
+        [routerLink]="item.route"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        {{item.label}}
+      </a>
+      }
+    </nav>
+  </aside>
+
+  <div class="main">
+    <header class="header">
+      <h1>Panel</h1>
+    </header>
+
+    <section class="content">
+      <router-outlet></router-outlet>
+    </section>
+  </div>
+</div>
