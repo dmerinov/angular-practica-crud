@@ -1,27 +1,42 @@
 <section class="cars-section">
-  <table class="cars-table">
-    <thead>
-    <tr>
-      <th>ID</th>
-      <th>Marca</th>
-      <th>Modelo</th>
-      <th>Unidades</th>
-    </tr>
-    </thead>
-    <tbody>
-      @for (car of carsService.cars(); track car.id) {
-        <tr>
-          <td>{{ car.id }}</td>
-          <td>{{ car.brandName }}</td>
-          <td>{{ car.modelName }}</td>
-          <td>{{ car.total }}</td>
-        </tr>
-      }
-      @empty {
-        <tr>
-          <td colspan="3">No cars available</td>
-        </tr>
-      }
-    </tbody>
-  </table>
+  @if (carsService.loading()) {
+    <div class="loading">
+      Loading...
+    </div>
+  } @else {
+    <table class="cars-table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Brand</th>
+        <th>Model</th>
+      </tr>
+      </thead>
+
+      <tbody>
+        @for (car of carsService.cars(); track car.id) {
+          <tr>
+            <td>{{ car.id }}</td>
+            <td>{{ car.brandName }}</td>
+            <td>{{ car.modelName }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+  <div class="pagination">
+    @if (!carsService.loading()) {
+      <button (click)="getPreviousPage()" class="btn-page">
+        &lt;
+      </button>
+
+      <h2 class="pages">
+        {{carsService.currentPage()}}/{{ carsService.totalPages() }}
+      </h2>
+
+      <button (click)="getNextPage()" class="btn-page">
+        &gt;
+      </button>
+    }
+  </div>
 </section>

@@ -16,6 +16,9 @@ import { AppModule } from './src/app.module';
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
+  app.enableCors({
+    origin: 'http://localhost:4200',
+  });
   app.use(cookieParser());
 
   // Allow class-validator to use NestJS dependency injection container

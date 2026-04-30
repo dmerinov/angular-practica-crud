@@ -8,4 +8,12 @@ import { CarsService } from '../../core/services/cars.service';
 })
 export default class HomePageComponent {
   carsService = inject(CarsService);
+
+  protected getPreviousPage() {
+    this.carsService.getPreviousPage()
+  }
+
+  protected getNextPage() {
+    this.carsService.getNextPage()
+  }
 }

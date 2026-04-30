@@ -14,3 +14,37 @@
   background: #1976d2;
   color: white;
 }
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btn-page {
+  background: #1976d2;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.2s ease;
+}
+
+.btn-page:hover {
+  background: #145ca8;
+}
+
+.btn-page:active {
+  transform: scale(0.95);
+}
+
+.loading {
+  text-align: center;
+  margin: 10px 0;
+  font-style: italic;
+  color: #666;
+}
