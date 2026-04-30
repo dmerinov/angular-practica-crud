@@ -1,0 +1,16 @@
+.cars-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial;
+}
+
+.cars-table th,
+.cars-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.cars-table thead {
+  background: #1976d2;
+  color: white;
+}

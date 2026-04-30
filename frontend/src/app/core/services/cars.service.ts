@@ -6,7 +6,7 @@ import { CarMapper } from '../mappers/car.mapper';
 
 @Injectable({ providedIn: 'root' })
 export class CarsService {
-  cars = signal<CarListDTO[]>([]);
+  cars = signal<Car[]>([]);
   private httpClient = inject(HttpClient);
   constructor() {
     this.loadCars();
@@ -14,9 +14,10 @@ export class CarsService {
 
   loadCars() {
     this.httpClient.get<CarListDTO>('http://localhost:3000/cars').subscribe((response) => {
-      const cars: Car[] = CarMapper.mapCarDTOArrayToCarArray(response.items);
+      const newCars: Car[] = CarMapper.mapCarDTOArrayToCarArray(response.items);
       console.log(response.items);
-      console.log(cars);
+      console.log(newCars);
+      this.cars.set(newCars)
     });
   }
 }
