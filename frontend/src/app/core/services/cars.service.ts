@@ -31,14 +31,15 @@ export class CarsService {
       console.log(response.items);
       console.log(newCars);
       this.cars.set(newCars);
-      this.currentPage.set(response.meta.currentPage);
       this.totalPages.set(response.meta.totalPages);
       this.loading.set(false);
     });
   }
 
   getNextPage(){
-    if(this.currentPage < this.totalPages){
+    if(this.currentPage() < this.totalPages()){
+      console.log("currentPage ", this.currentPage());
+      console.log("totalPages ", this.totalPages());
       this.currentPage.set(this.currentPage() + 1);
       this.loadCars();
     }
@@ -46,6 +47,8 @@ export class CarsService {
 
   getPreviousPage(){
     if (this.currentPage() > 1) {
+      console.log('currentPage ', this.currentPage());
+      console.log('totalPages ', this.totalPages());
       this.currentPage.set(this.currentPage() - 1);
       this.loadCars();
     }

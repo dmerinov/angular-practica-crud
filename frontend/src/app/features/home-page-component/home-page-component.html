@@ -26,17 +26,20 @@
   }
   <div class="pagination">
     @if (!carsService.loading()) {
-      <button (click)="getPreviousPage()" class="btn-page">
-        &lt;
-      </button>
-
+      @if (carsService.currentPage() !=1) {
+        <button (click)="getPreviousPage()" class="btn-page">
+          &lt;
+        </button>
+      }
       <h2 class="pages">
         {{carsService.currentPage()}}/{{ carsService.totalPages() }}
       </h2>
 
-      <button (click)="getNextPage()" class="btn-page">
-        &gt;
-      </button>
+      @if (carsService.currentPage() < carsService.totalPages()){
+        <button (click)="getNextPage()" class="btn-page">
+          &gt;
+        </button>
+      }
     }
   </div>
 </section>
