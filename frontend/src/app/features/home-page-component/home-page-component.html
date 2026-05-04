@@ -4,6 +4,11 @@
       Loading...
     </div>
   } @else {
+    @if(carsService.error()){
+      <div class="loading">
+        Error
+      </div>
+    } @else {
     <table class="cars-table">
       <thead>
       <tr>
@@ -25,7 +30,7 @@
     </table>
   }
   <div class="pagination">
-    @if (!carsService.loading()) {
+    @if (!carsService.loading) {
       @if (carsService.currentPage() !=1) {
         <button (click)="getPreviousPage()" class="btn-page">
           &lt;
@@ -42,4 +47,5 @@
       }
     }
   </div>
+  }
 </section>
